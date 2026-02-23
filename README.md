@@ -20,20 +20,44 @@ bienne-vigicrue/
 
 ## Démarrage rapide
 
+### ⚡ Option 1 — CLI standalone (le plus simple)
+
 ```bash
-# Installer les dépendances
+git clone https://github.com/jura39bot/bienne-vigicrue.git
+cd bienne-vigicrue
+
+# Environnement virtuel
+python3 -m venv .venv && source .venv/bin/activate
+
+# Dépendances
 pip install -r requirements.txt
 
-# Initialiser la base
-make db-init
+# Initialiser la base et backfill 30 jours
+python cli/main.py db-init
+python cli/main.py collect --backfill 30
 
-# Collecter les 30 derniers jours
-make backfill
+# Afficher les données
+python cli/main.py show
+python cli/main.py stats
+```
 
-# Lancer l'API
-make run
-# → http://localhost:8000
-# → http://localhost:8000/docs (Swagger)
+> ℹ️ La base SQLite (`bienne.db`) est créée automatiquement. Aucun serveur nécessaire pour le CLI.
+
+### Option 2 — API + Web
+
+```bash
+source .venv/bin/activate
+uvicorn api.main:app --reload
+# → http://localhost:8000      (interface web)
+# → http://localhost:8000/docs (Swagger UI)
+```
+
+### Option 3 — Docker Compose
+
+```bash
+cp .env.example .env
+docker-compose up -d api
+docker-compose run --rm collector   # collecte initiale
 ```
 
 ## CLI
@@ -42,11 +66,14 @@ make run
 # Collecter les 2 derniers jours (usage quotidien)
 python cli/main.py collect
 
-# Backfill 30 jours
+# Backfill N jours d'historique
 python cli/main.py collect --backfill 30
 
 # Afficher les 10 derniers relevés
 python cli/main.py show
+
+# Afficher avec filtre de dates
+python cli/main.py show --date-debut 2026-01-01 --date-fin 2026-02-01
 
 # Stats 30 derniers jours
 python cli/main.py stats --jours 30
