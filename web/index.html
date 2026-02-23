@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Bienne à Morez — Débits</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌊 La Bienne à Morez</h1>
+    <p class="subtitle">Station V241403001 — Débit en m³/s</p>
+  </header>
+
+  <main>
+    <section id="latest">
+      <h2>Dernier relevé</h2>
+      <div class="card" id="latest-card">Chargement...</div>
+    </section>
+
+    <section id="stats-section">
+      <h2>Statistiques (30 jours)</h2>
+      <div class="stats-grid" id="stats-grid">Chargement...</div>
+    </section>
+
+    <section id="history">
+      <h2>Historique</h2>
+      <table id="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Moy (m³/s)</th>
+            <th>Min</th>
+            <th>Max</th>
+          </tr>
+        </thead>
+        <tbody id="history-body">
+          <tr><td colspan="4">Chargement...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Source : <a href="https://www.vigicrues.gouv.fr/" target="_blank">Vigicrue</a> |
+       <a href="/docs" target="_blank">API Swagger</a></p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

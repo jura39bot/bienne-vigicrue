@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./bienne.db:/app/bienne.db
+    environment:
+      - DATABASE_URL=sqlite:///./bienne.db
+    restart: unless-stopped
+
+  collector:
+    build: .
+    command: python scripts/collect.py --days 2
+    volumes:
+      - ./bienne.db:/app/bienne.db
+    environment:
+      - DATABASE_URL=sqlite:///./bienne.db
+    profiles:
+      - collect
