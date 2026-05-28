@@ -12,3 +12,14 @@
 
 ## Débits annuels moyens
 - **2026** : 3.786 m³/s (moyenne sur 4 mois)
+
+## 2026-05
+
+| Métrique | Valeur |
+|---|---|
+| Débit moyen | **1.95 m³/s** |
+| Débit min | 0.3 m³/s |
+| Débit max | 12.63 m³/s |
+| Jours de données | 28 |
+
+*Actif — mis à jour le 2026-05-28*
